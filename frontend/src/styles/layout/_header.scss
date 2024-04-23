@@ -1,0 +1,30 @@
+.header {
+    background-color: #B21919;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 78px;
+    padding-right: 15px;
+    padding-left: 15px;
+
+    &__language {
+        &--button {
+            &:first-child {
+                margin-right: 10px;
+            }
+
+            &-selected {
+                filter: brightness(0.4);
+            }
+        }
+
+        &--flag {
+
+            width: 48px;
+            height: 32px;
+            object-fit: cover;
+            
+        }
+    }
+}
+

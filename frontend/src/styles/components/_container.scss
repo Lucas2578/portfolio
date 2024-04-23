@@ -1,0 +1,13 @@
+.container {
+    max-width: 1280px;
+    margin: auto;
+    padding: 2.5% 5% 2.5% 5%;
+
+    > footer {
+        max-width: none;
+        margin-right: 0;
+        margin-left: 0;
+        padding-right: 0;
+        padding-left: 0;
+    }
+}

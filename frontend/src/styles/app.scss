@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'ExoSpace';
+    src: url('../assets/fonts/ExoSpace.ttf');
+}
+
+@import './base/_base.scss';
+@import './components/_nav.scss';
+@import './layout/_header.scss';
+@import './layout/home.scss';
+@import './components/starfield.scss';
+@import './components/applecard.scss';
