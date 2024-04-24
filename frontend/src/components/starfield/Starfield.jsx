@@ -19,7 +19,6 @@ const Starfield = () => {
     generateStars();
 
     return () => {
-      // Cleanup code if needed
     };
   }, []);
 
