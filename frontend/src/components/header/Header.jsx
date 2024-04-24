@@ -5,7 +5,6 @@ import uk_flag from '../../assets/images/uk_flag.png';
 import LanguageButton from './LanguageButton';
 
 function Header() {
-    const githubUrl = 'https://github.com/Lucas2578';
 
     return (
         <header className="header">

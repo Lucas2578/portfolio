@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../../components/header/Header';
 import Starfield from '../../components/starfield/Starfield';
-import AppleCard from '../../components/cards/AppleCard';
+import SkillCard from '../../components/cards/SkillCard';
 import { useLanguage } from '../../utils/language/LanguageContext';
 
 const Home = () => {
@@ -10,11 +10,9 @@ const Home = () => {
     return (
       <div>
         <Header />
-        <main className="home">  
-            <div className="stars">
-            </div>
+        <main className="skill">
             <Starfield />
-            <AppleCard language={language} />
+            <SkillCard language={language} />
         </main>
       </div>
     );

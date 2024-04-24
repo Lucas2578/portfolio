@@ -1,0 +1,67 @@
+.skill {
+
+    &web, &other {
+        display: flex;
+        flex-direction: row;
+        width: 50%;
+        flex-wrap: wrap;
+        gap: 22px;
+        height: fit-content;
+        justify-content: flex-start;
+    }
+
+    &__card {
+        background: white;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        width: 185px;
+        font-family: "Roboto", sans-serif;
+        z-index: 1;
+        align-self: center;
+
+        &__header {
+            background-color: #F7F7F7;
+            border-bottom: 1px solid #ddd;
+            border-radius: 8px 8px 0px 0px;
+            align-items: center;
+            padding: 5px;
+
+            &--icon {
+                font-size: 10px;
+                margin-left: 5px;
+            }
+        }
+
+        &__body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &--icon {
+                font-size: 32px;
+                color: #B21919;
+                margin: 15px;
+            }
+
+            &--title {
+                font-size: 20px;
+                margin: 5px 15px 15px 15px;
+            }
+
+            &__level {
+                margin: 0px 15px 15px 15px;
+
+                &--icon {
+
+                    &-full {
+                        color: #FDCB58;
+                    }
+
+                    &-empty {
+                        color: #dddddd;
+                    }
+                }
+            }
+        }
+    }
+}
