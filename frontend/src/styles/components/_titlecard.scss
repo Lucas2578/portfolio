@@ -1,0 +1,42 @@
+.cardstitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cardtitle {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    width: 33%;
+    font-family: "Roboto", sans-serif;
+    z-index: 1;
+
+    &:nth-child(1) {
+        order: 1;
+    }
+
+    &:nth-child(2) {
+        order: 3;
+    }
+
+    &:nth-child(3) {
+        order: 2;
+    }
+
+    &__header {
+        background-color: #F7F7F7;
+        border-bottom: 1px solid #ddd;
+        border-radius: 8px 8px 0px 0px;
+        align-items: center;
+        padding: 5px;
+    }
+
+    &__body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 10px
+    }
+}

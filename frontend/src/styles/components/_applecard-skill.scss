@@ -3,11 +3,14 @@
     &web, &other {
         display: flex;
         flex-direction: row;
-        width: 50%;
+        width: 33%;
         flex-wrap: wrap;
-        gap: 22px;
+        gap: 35px;
         height: fit-content;
-        justify-content: flex-start;
+    }
+
+    &other {
+        justify-content: right;
     }
 
     &__card {
@@ -17,7 +20,6 @@
         width: 185px;
         font-family: "Roboto", sans-serif;
         z-index: 1;
-        align-self: center;
 
         &__header {
             background-color: #F7F7F7;
@@ -50,6 +52,13 @@
 
             &__level {
                 margin: 0px 15px 15px 15px;
+
+                &--name {
+                    text-align: center;
+                    margin-top: 10px;
+                    font-weight: bolder;
+                    color: #B21919;
+                }
 
                 &--icon {
 

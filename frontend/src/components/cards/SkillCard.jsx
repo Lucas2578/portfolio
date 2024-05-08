@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SkillCardLevel from './SkillCardLevel';
+import appleCard_skill from '../../utils/language/appleCard_skill';
 
 const SkillCard = ({ language }) => {
   const [webSkills, setWebSkills] = useState([]);
@@ -38,8 +39,10 @@ const SkillCard = ({ language }) => {
     fetchOtherSkills();
   }, [language]);
 
+  const levelNames = language === 'fr' ? appleCard_skill.fr.levels : appleCard_skill.en.levels;
+
   return (
-    <>
+    <div className="skills">
     <div className="skillweb">
       {webSkills.map(skill => (
         <div key={skill._id} className="skill__card">
@@ -54,6 +57,7 @@ const SkillCard = ({ language }) => {
                 <h2 className="skill__card__body--title">{language === 'fr' ? skill.name.fr : skill.name.en}</h2>
                 <div className="skill__card__body__level">
                     <SkillCardLevel level={skill.level} />
+                    <p className="skill__card__body__level--name">{levelNames[skill.level - 1]}</p>
                 </div>
             </div>
         </div>
@@ -73,12 +77,13 @@ const SkillCard = ({ language }) => {
                     <h2 className="skill__card__body--title">{language === 'fr' ? skill.name.fr : skill.name.en}</h2>
                     <div className="skill__card__body__level">
                         <SkillCardLevel level={skill.level} />
+                        <p className="skill__card__body__level--name">{levelNames[skill.level - 1]}</p>
                     </div>
                 </div>
             </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

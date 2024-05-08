@@ -15,7 +15,6 @@ ul, li {
 }
 
 main {
-    height: 1000px;
     background-color: #050810;
 }
 
@@ -33,4 +32,10 @@ button, input[type="submit"], input[type="reset"] {
     height: 1px;
     width: 35%;
     border-top: 1px solid black;
+
+    &__footer {
+        height: 1px;
+        border-top: 1px solid black;
+        width: 15%;
+    }
 }
