@@ -1,12 +1,14 @@
 import React from 'react';
-import appleCard_skill from '../../utils/language/appleCard_skill';
+import { fr_skills_page } from '../../utils/language/translates/translations_fr';
+import { en_skills_page } from '../../utils/language/translates/translations_en';
 
 const TitleCard = ({ language }) => {
-    const texts = language === 'fr' ? appleCard_skill.fr : appleCard_skill.en;
+
+    const texts = language === 'fr' ? fr_skills_page.skills_title : en_skills_page.skills_title;
 
     return (
         <>
-            {Object.keys(texts.titles).map((key) => (
+            {Object.entries(texts).map(([key, value]) => (
                 <div key={key} className="cardtitle">
                     <div className="cardtitle__header">
                         <i className="fa-solid fa-circle red"></i>
@@ -14,7 +16,7 @@ const TitleCard = ({ language }) => {
                         <i className="fa-solid fa-circle green"></i>
                     </div>
                     <div className="cardtitle__body">
-                        <h2>{texts.titles[key]}</h2>
+                        <h2>{value}</h2>
                     </div>
                 </div>
             ))}
