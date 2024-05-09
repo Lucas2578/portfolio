@@ -1,5 +1,4 @@
 import React from 'react';
-import Nav from '../nav/Nav';
 import fr_flag from '../../assets/images/french_flag.png';
 import uk_flag from '../../assets/images/uk_flag.png';
 import LanguageButton from './LanguageButton';
@@ -12,7 +11,6 @@ function Header() {
                 <LanguageButton langCode="fr" flagSrc={fr_flag} altText="French flag" />
                 <LanguageButton langCode="en" flagSrc={uk_flag} altText="Uk flag" />
             </div>
-            <Nav />
         </header>
     );
 }
