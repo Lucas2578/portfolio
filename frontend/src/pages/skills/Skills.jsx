@@ -5,7 +5,7 @@ import SkillCard from '../../components/cards/SkillCard';
 import Footer from '../../components/footer/Footer';
 import { useLanguage } from '../../utils/language/LanguageContext';
 
-const Home = () => {
+const Skill = () => {
     const { language } = useLanguage();
 
     return (
@@ -20,4 +20,4 @@ const Home = () => {
     );
   };
 
-export default Home;
+export default Skill;
