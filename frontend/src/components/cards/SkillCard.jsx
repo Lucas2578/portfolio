@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SkillCardLevel from './SkillCardLevel';
 import TitleCard from './TitleCard';
+import { fetchWebSkills, fetchOtherSkills } from '../../utils/getDatas';
 import { fr_skills_page } from '../../utils/language/translates/translations_fr';
 import { en_skills_page } from '../../utils/language/translates/translations_en';
 
@@ -10,35 +11,23 @@ const SkillCard = ({ language }) => {
     const [otherSkills, setOtherSkills] = useState([]);
 
     useEffect(() => {
-        const fetchWebSkills = () => {
-            fetch(`http://localhost:4000/api/skillwebs`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erreur lors de la récupération des compétences');
-                    }
-                    return response.json();
-                })
-                // Updating webSkills with retrieved data
-                .then(data => setWebSkills(data))
-                .catch(error => {
-                    console.error(error);
-                });
-        };
-
-        const fetchOtherSkills = () => {
-            fetch(`http://localhost:4000/api/skillothers`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erreur lors de la récupération des compétences');
-                    }
-                    return response.json();
-                })
-                // Updating otherSkills with retrieved data
-                .then(data => setOtherSkills(data))
-                .catch(error => {
-                    console.error(error);
-                });
-        };
+        // Webskills datas
+        fetchWebSkills()
+        .then(data => {
+            setWebSkills(data);
+        })
+        .catch(error => {
+            console.error('Error fetching webskills:', error);
+        });
+        
+        // Otherskills datas
+        fetchOtherSkills()
+        .then(data => {
+            setOtherSkills(data);
+        })
+        .catch(error => {
+            console.error('Error fetching otherskills:', error);
+        });
 
         // Calling both functions to fetch data
         fetchWebSkills();
