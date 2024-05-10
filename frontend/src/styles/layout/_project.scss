@@ -1,0 +1,14 @@
+.project {
+    padding: 80px;
+
+    @media screen and (max-width: 1024px) {
+        padding: 80px 0px 80px 0px;
+    }
+
+    &s {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 35px;
+        justify-content: center;
+    }
+}

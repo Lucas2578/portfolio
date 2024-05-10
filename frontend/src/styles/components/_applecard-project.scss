@@ -1,0 +1,95 @@
+.project {
+
+    &__card {
+        background: white;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        width: 480px;
+        font-family: "Roboto", sans-serif;
+        z-index: 1;
+
+        &__list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 35px;
+            justify-content: center;
+        }
+
+        &__header {
+            background-color: #F7F7F7;
+            border-bottom: 1px solid #ddd;
+            border-radius: 8px 8px 0px 0px;
+            align-items: center;
+            padding: 5px;
+
+            &--icon {
+                font-size: 10px;
+                margin-left: 5px;
+            }
+        }
+
+        &__body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &--title {
+                font-size: 20px;
+                margin: 5px 15px 15px 15px;
+            }
+
+            &__preview {
+                width: 80%;
+                margin: 15px 0px 15px 0px;
+
+                &--img {
+                    border: #ddd solid 1px;
+                    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                    border-radius: 8px;
+                    width: 100%;
+                    height: 250px;
+                    object-fit: cover;
+                }
+            }
+
+            &__icons {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+                margin: 15px 0px 15px 0px;
+                position: relative;
+            }
+
+            &__skillsrequired {
+                margin-left: 15px;
+                gap: 10px;
+                display: flex;
+
+                &--img {
+                    width: 40px;
+                    height: 40px;
+                    border: 1px solid #ddd;
+                    background-color: #F7F7F7;
+                    color: #B21919;
+                    font-size: 32px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 1px;
+                    filter:drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1))
+                }
+            }
+
+            &--img {
+                color: #621212;
+                font-size: 32px;
+                margin-right: 15px;
+                height: 100%;
+                align-items: center;
+                display: flex;
+                position: relative;
+            }
+        }
+    }
+}
