@@ -14,9 +14,6 @@ const Home = () => {
         <Header />
         <main className="skill">
             <Starfield />
-            <div className="cardstitle">
-              <TitleCard language={language} />
-            </div>
             <SkillCard language={language} />
         </main>
         <Footer />

@@ -2,8 +2,8 @@
 
     &web, &other {
         display: flex;
-        flex-direction: row;
-        width: 33%;
+        flex-direction: column;
+        width: 50%;
         flex-wrap: wrap;
         gap: 35px;
         height: fit-content;
@@ -11,6 +11,7 @@
 
     &other {
         justify-content: right;
+        margin-top: 70px;
     }
 
     &__card {
@@ -20,6 +21,13 @@
         width: 185px;
         font-family: "Roboto", sans-serif;
         z-index: 1;
+
+        &__list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 35px;
+            justify-content: center;
+        }
 
         &__header {
             background-color: #F7F7F7;

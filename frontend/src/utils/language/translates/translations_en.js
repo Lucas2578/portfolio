@@ -23,8 +23,8 @@ export { en_home_page };
 
 const en_skills_page = {
     skills_title: {
-        webskills: "Web technologies skills",
-        otherskills: "Others skills",
+        web: "Web technologies skills",
+        other: "Others skills",
     },
     skills: {
         web: {
