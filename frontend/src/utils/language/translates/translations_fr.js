@@ -54,3 +54,47 @@ const fr_skills_page = {
 }
 
 export { fr_skills_page };
+
+const fr_projects_page = {
+    projects: {
+        nameKey: {
+            booki: "Booki",
+            ohmyfood: "OhMyFood!",
+            sophiebluel: "Portfolio Sophie Bluel",
+            ninacarducci: "SEO & Debug Nina Carducci",
+            menumaker: "Planification de Menu Maker",
+            kasa: "Kasa",
+            monvieuxgrimoire: "Back-end Mon Vieux Grimoire",
+            frenchsky: "Administrateur Minecraft \"FrenchSky\"",
+            kalicraft: "Administrateur Minecraft \"KaliCraft\"",
+        },
+        skillsRequire: {
+            javascript: "JavaScript",
+            mongodb: "MongoDB",
+            nodejs: "Node.js",
+            react: "React",
+            sass: "SASS",
+            css: "CSS3",
+            html: "HTML5",
+            leadership: "Leadership",
+            projectmanagement: "Gestion de projet",
+            writing: "Rédaction",
+            yml: "YML",
+            github: "GitHub",
+        },
+        description: {
+            booki: "a",
+            ohmyfood: "b!",
+            sophiebluel: "c",
+            kasa: "d",
+            monvieuxgrimoire: "e",
+            frenchsky: "f",
+            kalicraft: "g",
+        },
+        modal: {
+            clickhere: "Accéder au projet Github"
+        }
+    }
+}
+
+export { fr_projects_page };
