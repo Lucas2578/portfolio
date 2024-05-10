@@ -5,9 +5,11 @@ import { fr_home_page } from '../../utils/language/translates/translations_fr'
 import { en_home_page } from '../../utils/language/translates/translations_en'
 
 const AppleCard = ({ language }) => {
+    // My brithday date for calculate my age
     const birthDate = '2002-03-25';
     const age = calculateAge(birthDate);
 
+    // Checking language, if "fr" charging translations fr
     const texts = language === 'fr' ? fr_home_page.about_me : en_home_page.about_me;
 
     return (
@@ -19,6 +21,7 @@ const AppleCard = ({ language }) => {
         </div>
         <div className="card__body">
           <img src={ProfilePicture} alt="Profile" className="card__body-picture" />
+          {/* Replace {age} per age based at birthDate and function calculateAge */}
           <h2>{texts.title.replace('{age}', age)}</h2>
           <p>{texts.desc}</p>
           <div className="card__body__desc">
