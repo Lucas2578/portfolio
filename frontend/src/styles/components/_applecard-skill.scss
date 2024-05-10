@@ -7,6 +7,10 @@
         flex-wrap: wrap;
         gap: 35px;
         height: fit-content;
+
+        @media screen and (max-width: 1024px) {
+            width: 80%;
+        }
     }
 
     &other {

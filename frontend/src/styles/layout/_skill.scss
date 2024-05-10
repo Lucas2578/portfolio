@@ -5,6 +5,10 @@
     padding: 80px;
     align-items: center;
 
+    @media screen and (max-width: 1024px) {
+        padding: 80px 0px 80px 0px;
+    }
+
     &s {
         display: flex;
         flex-direction: column;
