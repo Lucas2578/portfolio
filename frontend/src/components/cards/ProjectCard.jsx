@@ -60,7 +60,7 @@ const ProjectCard = ({ language }) => {
     const BASE_URL = 'http://localhost:3000'
 
     // Initializing functions at useModal.jsx
-    const { handleMouseEnter, handleMouseLeave, isLinkHovered } = useModal();
+    const { handleMouseEnter, handleMouseLeave, isItemHovered } = useModal();
 
     return (
         <div className="projects">
@@ -82,19 +82,29 @@ const ProjectCard = ({ language }) => {
                         <div className="project__card__body__icons">
                             <div className="project__card__body__skillsrequired">
                                 {/* Mapping for every skills in skillsRequire on db */}
-                                {project.skillsRequire.map((skillName) => {
-                                    // Search skill in webskills, if not find, search in otherskills
+                                {project.skillsRequire.map((skillName, index) => {
+                                    // Search skill in webskills, if not found, search in otherskills
                                     const skill = webSkills.find((webSkill) => webSkill.nameKey === skillName) || otherSkills.find((otherSkill) => otherSkill.nameKey === skillName);
-                                    // Return a icon skill if skill is finded
-                                    return skill && <i key={skill._id} className={`${skill.icon} project__card__body__skillsrequired--img`}></i>;
+                                    // Obtain unique id for each skill
+                                    const skillId = `skill_${project.nameKey}_${index}`;
+                                    // Return a icon skill if skill is found
+                                    return (
+                                        skill && (
+                                            <div key={skillId} onMouseEnter={() => handleMouseEnter(skillId)} onMouseLeave={handleMouseLeave}>
+                                                <i className={`${skill.icon} project__card__body__skillsrequired--img`}></i>
+                                                {/* Display the modal associated with this skill if the mouse is hovering */}
+                                                <Modal project={project} modalClass="project" title={skillId} isModalOpen={isItemHovered(skillId)} />
+                                            </div>
+                                        )
+                                    );
                                 })}
                             </div>
                             {/* handleMouseEnter manages opening the modal on hover, handleMouseLeave manages closing the modal */}
-                            <a href={project.githubLink} onMouseEnter={() => handleMouseEnter(project.nameKey)} onMouseLeave={handleMouseLeave}>
+                            <a href={project.githubLink} onMouseEnter={() => handleMouseEnter(`github_${project.nameKey}`)} onMouseLeave={handleMouseLeave}>
                                 <i className="fa-brands fa-github project__card__body--img"></i>
                             </a>
                             {/* isLinkHovered displays the modal associated with this project if the mouse is hovering */}
-                            <Modal project={project} modalClass="project" title={projectsTranslations.modal.clickhere} isModalOpen={isLinkHovered(project.nameKey)} />
+                            <Modal project={project} modalClass="project" title={projectsTranslations.modal.clickhere} isModalOpen={isItemHovered(`github_${project.nameKey}`)} />
                         </div>
                     </div>
                 </div>
