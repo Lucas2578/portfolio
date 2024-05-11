@@ -28,10 +28,6 @@ const SkillCard = ({ language }) => {
         .catch(error => {
             console.error('Error fetching otherskills:', error);
         });
-
-        // Calling both functions to fetch data
-        fetchWebSkills();
-        fetchOtherSkills();
     }, 
     // Triggering every time the language has changed
     [language]);

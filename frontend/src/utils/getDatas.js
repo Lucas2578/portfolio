@@ -10,6 +10,18 @@ export const fetchProjects = () => {
     });
 };
 
+// Datas from "projects" table in db for THIS project
+export const fetchProject = (projectNameKey) => {
+    return fetch(`http://localhost:4000/api/project/${projectNameKey}`).then(response => {
+        if (!response.ok) {
+            throw new Error('Erreur lors de la récupération du projet');
+        }
+        return response.json();
+    }).catch(error => {
+        console.error('Error fetching projects:', error);
+    });
+};
+
 // Datas from "webskills" table in db
 export const fetchWebSkills = () => {
     return fetch('http://localhost:4000/api/skillwebs').then(response => {
