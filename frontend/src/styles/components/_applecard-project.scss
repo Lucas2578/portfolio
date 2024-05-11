@@ -8,11 +8,27 @@
         font-family: "Roboto", sans-serif;
         z-index: 1;
 
+        &--selected {
+            transition: transform 0.5s ease;
+            margin-bottom: 20px;
+            width: 75%;
+            margin: 0px 80px 80px 80px;
+        }
+
+        &__img {
+            &--selected {
+                img {
+                    height: 650px;
+                }
+            }
+        }
+
         &__list {
             display: flex;
             flex-wrap: wrap;
             gap: 35px;
             justify-content: center;
+            width: 100%;
         }
 
         &__header {
@@ -36,6 +52,7 @@
             &--title {
                 font-size: 20px;
                 margin: 5px 15px 15px 15px;
+                color: black;
             }
 
             &__preview {

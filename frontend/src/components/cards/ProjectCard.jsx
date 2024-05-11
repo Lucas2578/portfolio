@@ -4,12 +4,14 @@ import useModal from '../../utils/useModal';
 import { fetchProjects, fetchWebSkills, fetchOtherSkills } from '../../utils/getDatas';
 import { fr_projects_page } from '../../utils/language/translates/translations_fr';
 import { en_projects_page } from '../../utils/language/translates/translations_en';
+import { NavLink } from 'react-router-dom';
 
 const ProjectCard = ({ language }) => {
     // Initializing three constants with empty array
     const [projects, setProjects] = useState([]);
     const [webSkills, setWebSkills] = useState([]);
     const [otherSkills, setOtherSkills] = useState([]);
+    const [enlargedCard, setEnlargedCard] = useState(null);
 
     useEffect(() => {
         // Projects datas
@@ -71,53 +73,62 @@ const ProjectCard = ({ language }) => {
     // Initializing functions at useModal.jsx
     const { handleMouseEnter, handleMouseLeave, isItemHovered } = useModal();
 
+    const handleClick = async (project) => {
+        setEnlargedCard(enlargedCard === project.nameKey ? null : project.nameKey);
+        if (enlargedCard !== project.nameKey) {
+            // If card is not on first position, set it
+            await setProjects([project, ...projects.filter(p => p.nameKey !== project.nameKey)]);
+        }
+        // Moving user to good project with anchor
+        document.getElementById(project.nameKey).scrollIntoView();
+    };
+
     return (
         <div className="projects">
-        {/* Mapping over these projects */}
-            {projects.map((project) => (
-                <div className="project__card" key={project.nameKey}>
-                    <div className="project__card__header">
-                        <i className="fa-solid fa-circle red project__card__header--icon"></i>
-                        <i className="fa-solid fa-circle yellow project__card__header--icon"></i>
-                        <i className="fa-solid fa-circle green project__card__header--icon"></i>
-                    </div>
-                    <div className="project__card__body">
-                        <h2 className="project__card__body--title">{translateNameKey(project.nameKey)}</h2>
-                        <div className="spacer"></div>
-                        <div className="project__card__body__preview">
-                            <img src={`${BASE_URL}/${project.imagePreviewPaths}`} alt={`preview ${project.nameKey}`} className="project__card__body__preview--img"></img>
-                        </div>
-                        <div className="spacer"></div>
-                        <div className="project__card__body__icons">
-                            <div className="project__card__body__skillsrequired">
-                                {/* Mapping for every skills in skillsRequire on db */}
-                                {project.skillsRequire.map((skillName, index, category) => {
-                                    // Search skill in webskills, if not found, search in otherskills
-                                    const skill = webSkills.find((webSkill) => webSkill.nameKey === skillName) || otherSkills.find((otherSkill) => otherSkill.nameKey === skillName);
-                                    // Obtain unique id for each skill
-                                    const skillId = `skill_${project.nameKey}_${index}`;
-                                    // Return a icon skill if skill is found
-                                    return (
-                                        skill && (
-                                            <div key={skillId} className="project__card__body__skillsrequired__icons" onMouseEnter={() => handleMouseEnter(skillId)} onMouseLeave={handleMouseLeave}>
-                                                <i className={`${skill.icon} project__card__body__skillsrequired--img`}></i>
-                                                {/* Display the modal associated with this skill if the mouse is hovering */}
-                                                <Modal project={project} modalClass="project__skills" title={translateNameKey(skillName)} isModalOpen={isItemHovered(skillId)} />
-                                            </div>
-                                        )
-                                    );
-                                })}
+            <div className="project__card__list">
+                {/* Mapping over these projects */}
+                {projects.map((project) => {
+                    const CardComponent = enlargedCard === project.nameKey ? NavLink : 'div';
+                    return (
+                        <CardComponent className={`project__card ${enlargedCard === project.nameKey ? 'project__card--selected' : ''}`} id={project.nameKey} key={project.nameKey} onClick={() => handleClick(project)} to={enlargedCard === project.nameKey ? `/project/${project.nameKey}` : null}>
+                            <div className="project__card__header">
+                                <i className="fa-solid fa-circle red project__card__header--icon"></i>
+                                <i className="fa-solid fa-circle yellow project__card__header--icon"></i>
+                                <i className="fa-solid fa-circle green project__card__header--icon"></i>
                             </div>
-                            {/* handleMouseEnter manages opening the modal on hover, handleMouseLeave manages closing the modal */}
-                            <a href={project.githubLink} onMouseEnter={() => handleMouseEnter(`github_${project.nameKey}`)} onMouseLeave={handleMouseLeave}>
-                                <i className="fa-brands fa-github project__card__body--img"></i>
-                            </a>
-                            {/* isLinkHovered displays the modal associated with this project if the mouse is hovering */}
-                            <Modal project={project} modalClass="project__github" title={projectsTranslations.modal.clickhere} isModalOpen={isItemHovered(`github_${project.nameKey}`)} />
-                        </div>
-                    </div>
-                </div>
-            ))}
+                            <div className="project__card__body">
+                                <h2 className="project__card__body--title">{translateNameKey(project.nameKey)}</h2>
+                                <div className="spacer"></div>
+                                <div className={`${enlargedCard === project.nameKey ? 'project__card__img--selected' : ''} project__card__body__preview`}>
+                                    <img src={`${BASE_URL}/${project.imagePreviewPaths}`} alt={`preview ${project.nameKey}`} className="project__card__body__preview--img"></img>
+                                </div>
+                                <div className="spacer"></div>
+                                <div className="project__card__body__icons">
+                                    <div className="project__card__body__skillsrequired">
+                                        {/* Mapping for every skills in skillsRequire on db */}
+                                        {project.skillsRequire.map((skillName, index, category) => {
+                                            // Search skill in webskills, if not found, search in otherskills
+                                            const skill = webSkills.find((webSkill) => webSkill.nameKey === skillName) || otherSkills.find((otherSkill) => otherSkill.nameKey === skillName);
+                                            // Obtain unique id for each skill
+                                            const skillId = `skill_${project.nameKey}_${index}`;
+                                            // Return a icon skill if skill is found
+                                            return (
+                                                skill && (
+                                                    <div key={skillId} className="project__card__body__skillsrequired__icons" onMouseEnter={() => handleMouseEnter(skillId)} onMouseLeave={handleMouseLeave}>
+                                                        <i className={`${skill.icon} project__card__body__skillsrequired--img`}></i>
+                                                        {/* Display the modal associated with this skill if the mouse is hovering */}
+                                                        <Modal project={project} modalClass="project__skills" title={translateNameKey(skillName)} isModalOpen={isItemHovered(skillId)} />
+                                                    </div>
+                                                )
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            </div>
+                        </CardComponent>
+                    )
+                })}
+            </div>
         </div>
     );
 };
