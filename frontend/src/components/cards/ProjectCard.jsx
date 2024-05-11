@@ -52,7 +52,16 @@ const ProjectCard = ({ language }) => {
 
     // Function to retrieve translated names using nameKey in the database
     const translateNameKey = (nameKey) => {
+        // Verify in projectsTranslations.nameKey
         let translation = projectsTranslations.nameKey[nameKey];
+        
+        // If translate is not find
+        if (!translation) {
+            // Claim skillsRequire translate
+            const { skillsRequire } = projectsTranslations;
+            translation = skillsRequire[nameKey];
+        }
+        
         return translation || nameKey;
     };
 
@@ -82,7 +91,7 @@ const ProjectCard = ({ language }) => {
                         <div className="project__card__body__icons">
                             <div className="project__card__body__skillsrequired">
                                 {/* Mapping for every skills in skillsRequire on db */}
-                                {project.skillsRequire.map((skillName, index) => {
+                                {project.skillsRequire.map((skillName, index, category) => {
                                     // Search skill in webskills, if not found, search in otherskills
                                     const skill = webSkills.find((webSkill) => webSkill.nameKey === skillName) || otherSkills.find((otherSkill) => otherSkill.nameKey === skillName);
                                     // Obtain unique id for each skill
@@ -90,10 +99,10 @@ const ProjectCard = ({ language }) => {
                                     // Return a icon skill if skill is found
                                     return (
                                         skill && (
-                                            <div key={skillId} onMouseEnter={() => handleMouseEnter(skillId)} onMouseLeave={handleMouseLeave}>
+                                            <div key={skillId} className="project__card__body__skillsrequired__icons" onMouseEnter={() => handleMouseEnter(skillId)} onMouseLeave={handleMouseLeave}>
                                                 <i className={`${skill.icon} project__card__body__skillsrequired--img`}></i>
                                                 {/* Display the modal associated with this skill if the mouse is hovering */}
-                                                <Modal project={project} modalClass="project" title={skillId} isModalOpen={isItemHovered(skillId)} />
+                                                <Modal project={project} modalClass="project__skills" title={translateNameKey(skillName)} isModalOpen={isItemHovered(skillId)} />
                                             </div>
                                         )
                                     );
@@ -104,7 +113,7 @@ const ProjectCard = ({ language }) => {
                                 <i className="fa-brands fa-github project__card__body--img"></i>
                             </a>
                             {/* isLinkHovered displays the modal associated with this project if the mouse is hovering */}
-                            <Modal project={project} modalClass="project" title={projectsTranslations.modal.clickhere} isModalOpen={isItemHovered(`github_${project.nameKey}`)} />
+                            <Modal project={project} modalClass="project__github" title={projectsTranslations.modal.clickhere} isModalOpen={isItemHovered(`github_${project.nameKey}`)} />
                         </div>
                     </div>
                 </div>
