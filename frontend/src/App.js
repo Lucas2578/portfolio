@@ -8,6 +8,7 @@ import { LanguageProvider } from './utils/language/LanguageContext';
 import "./styles/app.scss";
 
 const App = () => {
+  
   return (
     <BrowserRouter>
       <LanguageProvider>

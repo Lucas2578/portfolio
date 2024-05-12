@@ -3,13 +3,14 @@ import SkillCardLevel from './SkillCardLevel';
 import TitleCard from './TitleCard';
 import { fetchWebSkills, fetchOtherSkills } from '../../utils/getDatas';
 import { translateSkillCardNameKey } from '../../utils/language/SearchTraduction';
-import { fr_skills_page } from '../../utils/language/translates/translations_fr';
-import { en_skills_page } from '../../utils/language/translates/translations_en';
+import { useLanguage } from '../../utils/language/LanguageContext';
 
-const SkillCard = ({ language }) => {
+const SkillCard = () => {
     // Initializing two constants with empty array
     const [webSkills, setWebSkills] = useState([]);
     const [otherSkills, setOtherSkills] = useState([]);
+    // Translates
+    const { translations } = useLanguage();
 
     useEffect(() => {
         // Webskills datas
@@ -31,11 +32,7 @@ const SkillCard = ({ language }) => {
         });
     }, 
     // Triggering every time the language has changed
-    [language]);
-
-    // Checking language, if "fr" charging translations fr
-    const skillsTranslations = language === 'fr' ? fr_skills_page.skills : en_skills_page.skills;
-    const levelNames = language === 'fr' ? fr_skills_page.skills.level_name : en_skills_page.skills.level_name;
+    []);
 
     // Initializing an array with different skills categories
     const groupedSkills = [
@@ -48,7 +45,7 @@ const SkillCard = ({ language }) => {
             {/* Mapping over these categories */}
             {groupedSkills.map(({ category, skills }) => (
                 <div className={`skill${category}`} key={category}>
-                    <TitleCard language={language} category={category} />
+                    <TitleCard category={category} />
                     <div className="skill__card__list">
                         {/* Mapping for each present skill */}
                         {skills.map(skill => (
@@ -62,10 +59,10 @@ const SkillCard = ({ language }) => {
                                     <i className={`${skill.icon} skill__card__body--icon`}></i>
                                     <div className="spacer"></div>
                                     {/* Calling the function to find the skill's name */}
-                                    <h2 className="skill__card__body--title">{translateSkillCardNameKey(skill.nameKey, category, skillsTranslations)}</h2>
+                                    <h2 className="skill__card__body--title">{translateSkillCardNameKey(skill.nameKey, category, translations.skills_page.skills)}</h2>
                                     <div className="skill__card__body__level">
                                         <SkillCardLevel level={skill.level} />
-                                        <p className="skill__card__body__level--name">{levelNames[skill.level]}</p>
+                                        <p className="skill__card__body__level--name">{translations.skills_page.skills.level_name[skill.level]}</p>
                                     </div>
                                 </div>
                             </div>

@@ -4,7 +4,7 @@ import Starfield from '../../components/starfield/Starfield';
 import Footer from '../../components/footer/Footer';
 import ProjectInfoCards from '../../components/cards/ProjectInfoCards';
 
-const Project = ({ language }) => {
+const Project = () => {
 
   return (
     <div>

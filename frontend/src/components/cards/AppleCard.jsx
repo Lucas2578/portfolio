@@ -1,16 +1,14 @@
 import React from 'react';
 import ProfilePicture from '../../assets/images/profile_picture.jpg';
 import calculateAge from '../../utils/calculateAge';
-import { fr_home_page } from '../../utils/language/translates/translations_fr'
-import { en_home_page } from '../../utils/language/translates/translations_en'
+import { useLanguage } from '../../utils/language/LanguageContext';
 
-const AppleCard = ({ language }) => {
-    // My brithday date for calculate my age
+const AppleCard = () => {
+    // My birthday date for calculate my age
     const birthDate = '2002-03-25';
     const age = calculateAge(birthDate);
-
-    // Checking language, if "fr" charging translations fr
-    const texts = language === 'fr' ? fr_home_page.about_me : en_home_page.about_me;
+    // Translates
+    const { translations } = useLanguage();
 
     return (
       <div className="card">
@@ -22,10 +20,10 @@ const AppleCard = ({ language }) => {
         <div className="card__body">
           <img src={ProfilePicture} alt="Profile" className="card__body-picture" />
           {/* Replace {age} per age based at birthDate and function calculateAge */}
-          <h2>{texts.title.replace('{age}', age)}</h2>
-          <p>{texts.desc}</p>
+          <h2>{translations.home_page.about_me.title.replace('{age}', age)}</h2>
+          <p>{translations.home_page.about_me.desc}</p>
           <div className="card__body__desc">
-              <p>{texts.desc_body}</p>
+              <p>{translations.home_page.about_me.desc_body}</p>
           </div>
         </div>
       </div>

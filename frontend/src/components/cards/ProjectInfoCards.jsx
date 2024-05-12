@@ -2,7 +2,7 @@ import React from 'react';
 import ProjectSubCard from './ProjectSubCard';
 import ProjectDescCard from './ProjectDescCard';
 
-const ProjectInfoCards = ({ language }) => {
+const ProjectInfoCards = () => {
 
   return (
     <>
@@ -11,9 +11,9 @@ const ProjectInfoCards = ({ language }) => {
       </div>
       <div className="project__info__list">
         {/* Screen is the name of screen required in db */}
-          <ProjectSubCard screen="screen1" language={language} />
-          <ProjectSubCard screen="screen2" language={language} />
-          <ProjectSubCard screen="screen3" language={language} />
+          <ProjectSubCard screen="screen1" />
+          <ProjectSubCard screen="screen2" />
+          <ProjectSubCard screen="screen3" />
       </div>
     </>
   );

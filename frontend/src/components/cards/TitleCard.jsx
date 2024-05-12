@@ -1,12 +1,12 @@
 import React from 'react';
-import { fr_skills_page } from '../../utils/language/translates/translations_fr';
-import { en_skills_page } from '../../utils/language/translates/translations_en';
+import { useLanguage } from '../../utils/language/LanguageContext';
 
-const TitleCard = ({ language, category }) => {
-    // Checking language, if "fr" charging translations fr
-    const texts = language === 'fr' ? fr_skills_page.skills_title : en_skills_page.skills_title;
+const TitleCard = ({ category }) => {
+    // Translates
+    const { translations } = useLanguage();
+    
     // Search translate for a good category
-    const title = texts[category];
+    const title = translations.skills_page.skills_title[category];
 
     return (
         <div className="cardtitle">

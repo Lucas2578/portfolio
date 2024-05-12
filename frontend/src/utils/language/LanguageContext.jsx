@@ -1,19 +1,35 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
+import frTranslations from './translates/translations_fr';
+import enTranslations from './translates/translations_en';
 
-// Créez un contexte pour la langue
+// Associated each language with the correct translate file
+const translationsMap = {
+  fr: frTranslations,
+  en: enTranslations,
+};
+
+// Creates a context for language and translations
 const LanguageContext = createContext();
 
-// Créez un fournisseur de contexte pour fournir la langue à toute l'application
+// Give language and translations to all components via context
 export const LanguageProvider = ({ children }) => {
-    // Définissez l'état initial de la langue sur 'fr' (français)
+    // Local state to store the selected language (defaults to 'fr')
     const [language, setLanguage] = useState('fr');
+    // Local state to store translations for the selected language
+    const [translations, setTranslations] = useState(translationsMap[language]);
 
+    // Update translate whenever a new language is selected
+    useEffect(() => {
+        setTranslations(translationsMap[language]);
+    }, [language]);
+
+    // Give the LanguageContext.Provider with language and translates values
     return (
-        <LanguageContext.Provider value={{ language, setLanguage }}>
+        <LanguageContext.Provider value={{ language, setLanguage, translations }}>
             {children}
         </LanguageContext.Provider>
     );
 };
 
-// Créez un hook personnalisé pour utiliser le contexte de langue dans vos composants
+// Custom hook to use the context language and translates context in components
 export const useLanguage = () => useContext(LanguageContext);

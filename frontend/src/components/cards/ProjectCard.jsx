@@ -3,17 +3,18 @@ import Modal from '../modal/Modal';
 import useModal from '../../utils/useModal';
 import { translateProjectCardNameKey } from '../../utils/language/SearchTraduction';
 import { fetchProjects, fetchWebSkills, fetchOtherSkills } from '../../utils/getDatas';
-import { fr_projects_page } from '../../utils/language/translates/translations_fr';
-import { en_projects_page } from '../../utils/language/translates/translations_en';
+import { useLanguage } from '../../utils/language/LanguageContext';
 import { NavLink } from 'react-router-dom';
 import { REACT_APP_BASE_URL } from '../../utils/config';
 
-const ProjectCard = ({ language }) => {
+const ProjectCard = () => {
     // Initializing three constants with empty array
     const [projects, setProjects] = useState([]);
     const [webSkills, setWebSkills] = useState([]);
     const [otherSkills, setOtherSkills] = useState([]);
     const [enlargedCard, setEnlargedCard] = useState(null);
+    // Translates
+    const { translations } = useLanguage();
 
     useEffect(() => {
         // Projects datas
@@ -49,10 +50,7 @@ const ProjectCard = ({ language }) => {
         fetchProjects();
     }, 
     // Triggering every time the language has changed
-    [language]);
-
-    // Checking language, if "fr" charging translations fr
-    const projectsTranslations = language === 'fr' ? fr_projects_page.projects : en_projects_page.projects;
+    []);
 
     // Initializing functions at useModal.jsx
     const { handleMouseEnter, handleMouseLeave, isItemHovered } = useModal();
@@ -81,7 +79,7 @@ const ProjectCard = ({ language }) => {
                                 <i className="fa-solid fa-circle green project__card__header--icon"></i>
                             </div>
                             <div className="project__card__body">
-                                <h2 className="project__card__body--title">{translateProjectCardNameKey(project.nameKey, projectsTranslations)}</h2>
+                                <h2 className="project__card__body--title">{translateProjectCardNameKey(project.nameKey, translations.projects_page.projects)}</h2>
                                 <div className="spacer"></div>
                                 <div className={`${enlargedCard === project.nameKey ? 'project__card__img--selected' : ''} project__card__body__preview`}>
                                     <img src={`${REACT_APP_BASE_URL}/${project.imagePreviewPaths}`} alt={`preview ${project.nameKey}`} className="project__card__body__preview--img"></img>
@@ -101,7 +99,7 @@ const ProjectCard = ({ language }) => {
                                                     <div key={skillId} className="project__card__body__skillsrequired__icons" onMouseEnter={() => handleMouseEnter(skillId)} onMouseLeave={handleMouseLeave}>
                                                         <i className={`${skill.icon} project__card__body__skillsrequired--img`}></i>
                                                         {/* Display the modal associated with this skill if the mouse is hovering */}
-                                                        <Modal project={project} modalClass="project__skills" title={translateProjectCardNameKey(skillName, projectsTranslations)} isModalOpen={isItemHovered(skillId)} />
+                                                        <Modal project={project} modalClass="project__skills" title={translateProjectCardNameKey(skillName, translations.projects_page.projects)} isModalOpen={isItemHovered(skillId)} />
                                                     </div>
                                                 )
                                             );
