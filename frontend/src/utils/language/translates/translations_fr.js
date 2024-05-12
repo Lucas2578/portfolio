@@ -67,6 +67,11 @@ const fr_projects_page = {
             monvieuxgrimoire: "Back-end Mon Vieux Grimoire",
             frenchsky: "Administrateur Minecraft \"FrenchSky\"",
             kalicraft: "Administrateur Minecraft \"KaliCraft\"",
+            desc: {
+                Test1: "Screen 1 OhMyFood !",
+                Test2: "Screen 2 OhMyFood !",
+                Test3: "Screen 3 OhMyFood !",
+            }
         },
         skillsRequire: {
             javascript: "JavaScript",
@@ -98,3 +103,42 @@ const fr_projects_page = {
 }
 
 export { fr_projects_page };
+
+const fr_project_page = {
+    project: {
+        booki: {
+            title: {
+                screen1: "",
+                screen2: "",
+                screen3: "",
+            },
+            legend: {
+                screen1: "",
+                screen2: "",
+                screen3: "",
+            },
+            desc: ""
+        },
+        ohmyfood: {
+            title: {
+                screen1: "De multiples animations CSS",
+                screen2: "Un site complètement responsive",
+                screen3: "Plusieurs pages comportant les menus",
+            },
+            legend: {
+                screen1: "Une animation de chargement de page lors de l'ouverture de celle-ci.",
+                screen2: "Elaboré en Mobile first, ce site est totalement responsive (PC, tablette et mobile).",
+                screen3: "Chaque restaurant ouvre une nouvelle page comportant les menus des restaurants.",
+            },
+            desc: {
+                title: "OhMyFood! | Réalisé en 2023",
+                content: "OhMyFood est un projet réalisé dans mon parcours de formation développeur WEB. Ce projet m'a permis principalement d'acquérir des compétences SASS et de m'améliorer sur le langage HTML & CSS. Ce projet a également été réalisé en Mobile First, une grande première pour moi.",
+            }
+        },
+        modal: {
+            clickhere: "Accès au projet Github"
+        }
+    }
+}
+
+export { fr_project_page };

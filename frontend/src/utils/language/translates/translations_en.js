@@ -90,6 +90,42 @@ const en_projects_page = {
             monvieuxgrimoire: "e",
             frenchsky: "f",
             kalicraft: "g",
+        }
+    }
+}
+
+export { en_projects_page };
+
+const en_project_page = {
+    project: {
+        booki: {
+            title: {
+                screen1: "",
+                screen2: "",
+                screen3: "",
+            },
+            legend: {
+                screen1: "",
+                screen2: "",
+                screen3: "",
+            },
+            desc: ""
+        },
+        ohmyfood: {
+            title: {
+                screen1: "Multiple CSS Animations",
+                screen2: "Fully Responsive Website",
+                screen3: "Multiple Pages with Menus"
+            },
+            legend: {
+                screen1: "Page loading animation when opening.",
+                screen2: "Developed with Mobile-first approach, this website is fully responsive (Desktop, tablet, and mobile).",
+                screen3: "Each restaurant opens a new page containing restaurant menus."
+            },
+            desc: {
+                title: "OhMyFood! | Realised in 2023",
+                content: "OhMyFood is a project completed during my web developer training. This project primarily allowed me to acquire SASS skills and improve my HTML & CSS. It was also developed using Mobile First approach, a first for me.",
+            }
         },
         modal: {
             clickhere: "Access to Github project"
@@ -97,4 +133,4 @@ const en_projects_page = {
     }
 }
 
-export { en_projects_page };
+export { en_project_page };
