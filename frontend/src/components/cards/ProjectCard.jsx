@@ -6,6 +6,7 @@ import { fetchProjects, fetchWebSkills, fetchOtherSkills } from '../../utils/get
 import { fr_projects_page } from '../../utils/language/translates/translations_fr';
 import { en_projects_page } from '../../utils/language/translates/translations_en';
 import { NavLink } from 'react-router-dom';
+import { REACT_APP_BASE_URL } from '../../utils/config';
 
 const ProjectCard = ({ language }) => {
     // Initializing three constants with empty array
@@ -53,9 +54,6 @@ const ProjectCard = ({ language }) => {
     // Checking language, if "fr" charging translations fr
     const projectsTranslations = language === 'fr' ? fr_projects_page.projects : en_projects_page.projects;
 
-    // Base url for images
-    const BASE_URL = 'http://localhost:3000'
-
     // Initializing functions at useModal.jsx
     const { handleMouseEnter, handleMouseLeave, isItemHovered } = useModal();
 
@@ -86,7 +84,7 @@ const ProjectCard = ({ language }) => {
                                 <h2 className="project__card__body--title">{translateProjectCardNameKey(project.nameKey, projectsTranslations)}</h2>
                                 <div className="spacer"></div>
                                 <div className={`${enlargedCard === project.nameKey ? 'project__card__img--selected' : ''} project__card__body__preview`}>
-                                    <img src={`${BASE_URL}/${project.imagePreviewPaths}`} alt={`preview ${project.nameKey}`} className="project__card__body__preview--img"></img>
+                                    <img src={`${REACT_APP_BASE_URL}/${project.imagePreviewPaths}`} alt={`preview ${project.nameKey}`} className="project__card__body__preview--img"></img>
                                 </div>
                                 <div className="spacer"></div>
                                 <div className="project__card__body__icons">

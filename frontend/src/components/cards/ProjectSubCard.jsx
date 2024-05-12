@@ -5,6 +5,7 @@ import { translateSubCardNameScreen, translateSubCardLegendScreen } from '../../
 import { fr_project_page } from '../../utils/language/translates/translations_fr';
 import { en_project_page } from '../../utils/language/translates/translations_en';
 import { useLanguage } from '../../utils/language/LanguageContext';
+import { REACT_APP_BASE_URL } from '../../utils/config';
 
 const ProjectSubCard = ({ screen }) => {
   const { projectNameKey } = useParams();
@@ -26,8 +27,6 @@ const ProjectSubCard = ({ screen }) => {
     // Checking language, if "fr" charging translations fr
     const projectsTranslations = language === 'fr' ? fr_project_page.project : en_project_page.project;
 
-      const BASE_URL = 'http://localhost:3000'
-
       return (
         <div className="project__info__card">
           <div className="project__info__card__header">
@@ -40,7 +39,7 @@ const ProjectSubCard = ({ screen }) => {
             <div className="spacer"></div>
             {project && project.imagePaths && (
               <div className="project__info__card__body__img">
-                <img src={`${BASE_URL}/${project.imagePaths[screen]}`} alt={translateSubCardNameScreen(projectNameKey, screen, projectsTranslations)} className="project__info__card__body__img--img"></img>
+                <img src={`${REACT_APP_BASE_URL}/${project.imagePaths[screen]}`} alt={translateSubCardNameScreen(projectNameKey, screen, projectsTranslations)} className="project__info__card__body__img--img"></img>
               </div>
             )}
             <div className="spacer"></div>
