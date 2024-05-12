@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SkillCardLevel from './SkillCardLevel';
 import TitleCard from './TitleCard';
 import { fetchWebSkills, fetchOtherSkills } from '../../utils/getDatas';
+import { translateSkillCardNameKey } from '../../utils/language/SearchTraduction';
 import { fr_skills_page } from '../../utils/language/translates/translations_fr';
 import { en_skills_page } from '../../utils/language/translates/translations_en';
 
@@ -36,12 +37,6 @@ const SkillCard = ({ language }) => {
     const skillsTranslations = language === 'fr' ? fr_skills_page.skills : en_skills_page.skills;
     const levelNames = language === 'fr' ? fr_skills_page.skills.level_name : en_skills_page.skills.level_name;
 
-    // Function to retrieve translated names using nameKey in the database
-    const translateNameKey = (nameKey, type) => {
-        let translation = skillsTranslations[type][nameKey];
-        return translation || nameKey;
-    };
-
     // Initializing an array with different skills categories
     const groupedSkills = [
         { category: 'web', skills: webSkills },
@@ -67,7 +62,7 @@ const SkillCard = ({ language }) => {
                                     <i className={`${skill.icon} skill__card__body--icon`}></i>
                                     <div className="spacer"></div>
                                     {/* Calling the function to find the skill's name */}
-                                    <h2 className="skill__card__body--title">{translateNameKey(skill.nameKey, category)}</h2>
+                                    <h2 className="skill__card__body--title">{translateSkillCardNameKey(skill.nameKey, category, skillsTranslations)}</h2>
                                     <div className="skill__card__body__level">
                                         <SkillCardLevel level={skill.level} />
                                         <p className="skill__card__body__level--name">{levelNames[skill.level]}</p>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../modal/Modal';
 import useModal from '../../utils/useModal';
+import { translateProjectCardNameKey } from '../../utils/language/SearchTraduction';
 import { fetchProjects, fetchWebSkills, fetchOtherSkills } from '../../utils/getDatas';
 import { fr_projects_page } from '../../utils/language/translates/translations_fr';
 import { en_projects_page } from '../../utils/language/translates/translations_en';
@@ -52,21 +53,6 @@ const ProjectCard = ({ language }) => {
     // Checking language, if "fr" charging translations fr
     const projectsTranslations = language === 'fr' ? fr_projects_page.projects : en_projects_page.projects;
 
-    // Function to retrieve translated names using nameKey in the database
-    const translateNameKey = (nameKey) => {
-        // Verify in projectsTranslations.nameKey
-        let translation = projectsTranslations.nameKey[nameKey];
-        
-        // If translate is not find
-        if (!translation) {
-            // Claim skillsRequire translate
-            const { skillsRequire } = projectsTranslations;
-            translation = skillsRequire[nameKey];
-        }
-        
-        return translation || nameKey;
-    };
-
     // Base url for images
     const BASE_URL = 'http://localhost:3000'
 
@@ -97,7 +83,7 @@ const ProjectCard = ({ language }) => {
                                 <i className="fa-solid fa-circle green project__card__header--icon"></i>
                             </div>
                             <div className="project__card__body">
-                                <h2 className="project__card__body--title">{translateNameKey(project.nameKey)}</h2>
+                                <h2 className="project__card__body--title">{translateProjectCardNameKey(project.nameKey, projectsTranslations)}</h2>
                                 <div className="spacer"></div>
                                 <div className={`${enlargedCard === project.nameKey ? 'project__card__img--selected' : ''} project__card__body__preview`}>
                                     <img src={`${BASE_URL}/${project.imagePreviewPaths}`} alt={`preview ${project.nameKey}`} className="project__card__body__preview--img"></img>
@@ -117,7 +103,7 @@ const ProjectCard = ({ language }) => {
                                                     <div key={skillId} className="project__card__body__skillsrequired__icons" onMouseEnter={() => handleMouseEnter(skillId)} onMouseLeave={handleMouseLeave}>
                                                         <i className={`${skill.icon} project__card__body__skillsrequired--img`}></i>
                                                         {/* Display the modal associated with this skill if the mouse is hovering */}
-                                                        <Modal project={project} modalClass="project__skills" title={translateNameKey(skillName)} isModalOpen={isItemHovered(skillId)} />
+                                                        <Modal project={project} modalClass="project__skills" title={translateProjectCardNameKey(skillName, projectsTranslations)} isModalOpen={isItemHovered(skillId)} />
                                                     </div>
                                                 )
                                             );

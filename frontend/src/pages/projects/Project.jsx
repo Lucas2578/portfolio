@@ -1,33 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React from 'react';
 import Header from '../../components/header/Header';
 import Starfield from '../../components/starfield/Starfield';
 import Footer from '../../components/footer/Footer';
-import { fetchProject } from '../../utils/getDatas';
+import ProjectInfoCards from '../../components/cards/ProjectInfoCards';
 
-const Project = () => {
-  const { projectNameKey } = useParams();
-  const [project, setProject] = useState([]);
-
-  useEffect(() => {
-    // Webskills datas
-    fetchProject(projectNameKey)
-    .then(data => {
-        setProject(data);
-    })
-    .catch(error => {
-        console.error('Error fetching projects:', error);
-    });
-}, 
-[projectNameKey]);
+const Project = ({ language }) => {
 
   return (
     <div>
       <Header />
-      <main className="project">
+      <main className="project__info">
           <Starfield />
+          <ProjectInfoCards />
       </main>
-      <h2>{projectNameKey}</h2>
       <Footer />
     </div>
   );
