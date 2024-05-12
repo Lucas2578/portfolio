@@ -43,18 +43,13 @@ const ProjectCard = () => {
         .catch(error => {
             console.error('Error fetching otherskills:', error);
         });
-
-        // Calling both functions to fetch data
-        fetchWebSkills();
-        fetchOtherSkills();
-        fetchProjects();
     }, 
-    // Triggering every time the language has changed
     []);
 
     // Initializing functions at useModal.jsx
     const { handleMouseEnter, handleMouseLeave, isItemHovered } = useModal();
 
+    // Function for enlarged card on click and place THIS card on first position and moving user to THIS project
     const handleClick = async (project) => {
         setEnlargedCard(enlargedCard === project.nameKey ? null : project.nameKey);
         if (enlargedCard !== project.nameKey) {

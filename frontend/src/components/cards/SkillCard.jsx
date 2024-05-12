@@ -31,7 +31,6 @@ const SkillCard = () => {
             console.error('Error fetching otherskills:', error);
         });
     }, 
-    // Triggering every time the language has changed
     []);
 
     // Initializing an array with different skills categories
