@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../../components/header/Header';
 import Starfield from '../../components/starfield/Starfield';
 import { fetchProjects, fetchWebSkills, fetchOtherSkills } from '../../utils/getDatas';
-import Footer from '../../components/footer/Footer';
 import ProjectCard from '../../components/cards/project/ProjectCard';
 import Layout from '../../components/layout/Layout';
 
