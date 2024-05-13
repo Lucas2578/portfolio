@@ -1,5 +1,5 @@
 .footer {
-    background-color: #621212;
+    background-color: $red-color;
     display: flex;
     font-family: Roboto;
     height: 150px;
@@ -24,17 +24,17 @@
             &--link {
                 width: 48px;
                 height: 48px;
-                background-color: white;
+                background-color: $background-footer-icon-color;
                 border-radius: 50px;
                 align-items: center;
                 justify-content: center;
                 display: flex;
                 margin: 10px;
-                color: #200505;
+                color: $darkred-color;
                 transition: 0.25s;
 
                 &:hover {
-                    color: #621212;
+                    color: $red-color;
                 }
             }
         }
@@ -42,13 +42,13 @@
         &__info {
             display: flex;
             flex-direction: row;
-            color: white;
+            color: $secondary-font-color;
             font-weight: bolder;
             align-items: center;
 
             &--icon {
-                background-color: white;
-                color: #200505;
+                background-color: $background-footer-icon-color;
+                color: $darkred-color;
                 width: 20px;
                 height: 20px;
                 display: flex;

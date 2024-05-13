@@ -5,7 +5,7 @@
 
 a {
     text-decoration: none;
-    color: white;
+    color: $secondary-font-color;
 }
 
 ul, li {
@@ -15,11 +15,11 @@ ul, li {
 }
 
 main {
-    background-color: #200505;
+    background-color: $darkred-color;
     padding: 80px;
     min-height: 550px;
 
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: $breakpoint-tablet) {
         padding: 80px 0px 80px 0px;
     }
 }
@@ -37,11 +37,11 @@ button, input[type="submit"], input[type="reset"] {
 .spacer {
     height: 1px;
     width: 35%;
-    border-top: 1px solid black;
+    border-top: 1px solid $spacer-color;
 
     &__footer {
         height: 1px;
-        border-top: 1px solid black;
+        border-top: 1px solid $spacer-color;
         width: 15%;
     }
 }

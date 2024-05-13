@@ -7,11 +7,11 @@
     font-family: "Roboto", sans-serif;
     z-index: 1;
 
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: $breakpoint-tablet) {
         height: 475px;
     }
 
-    @media screen and (max-width: 460px) {
+    @media screen and (max-width: $breakpoint-mobile) {
 
         h2 {
             font-size: 16px;
@@ -57,13 +57,13 @@
 }
 
 .red {
-    color: #ED4C5C;
+    color: $header-card-left-button-color;
 }
 
 .yellow {
-    color: #FDCB58;
+    color: $header-card-middle-button-color;
 }
 
 .green {
-    color: #78B159;
+    color: $header-card-right-button-color;
 }

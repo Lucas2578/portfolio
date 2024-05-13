@@ -5,7 +5,7 @@
     &__github {
 
         &__modalcard {
-            background-color: white;
+            background-color: $background-modal-color;
             position: absolute;
             bottom: 50px;
             right: 46px;
@@ -17,8 +17,8 @@
             animation: modalOpen 0.3s ease-in-out;
     
             &__header {
-                background-color: #F7F7F7;
-                border-bottom: 1px solid #ddd;
+                background-color: $background-header-card-color;
+                border-bottom: 1px solid $border-card-color;
                 border-radius: 8px 8px 0px 0px;
                 align-items: center;
                 padding: 5px;
@@ -29,7 +29,7 @@
                     font-size: 20px;
                     margin: 5px 15px 15px 15px;
                     text-align: center;
-                    color: black;
+                    color: $primary-font-color;
                 }
             }
         }
@@ -38,7 +38,7 @@
     &__skills {
 
         &__modalcard {
-            background-color: white;
+            background-color: $background-modal-color;
             position: absolute;
             bottom: 50px;
             left: 46px;
@@ -50,8 +50,8 @@
             animation: modalOpen 0.3s ease-in-out;
     
             &__header {
-                background-color: #F7F7F7;
-                border-bottom: 1px solid #ddd;
+                background-color: $background-header-card-color;
+                border-bottom: 1px solid $border-card-color;
                 border-radius: 8px 8px 0px 0px;
                 align-items: center;
                 padding: 5px;
@@ -62,7 +62,7 @@
                     font-size: 20px;
                     margin: 5px 15px 15px 15px;
                     text-align: center;
-                    color: black;
+                    color: $primary-font-color;
                 }
             }
         }
