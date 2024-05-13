@@ -1,20 +1,32 @@
+// Reds colors used in background and icons
 $darkred-color: #200505;
 $red-color: #621212;
 $flashred-color: #B21919;
+
+// Font color for cards
 $primary-font-color: black;
+// Font color nav
 $secondary-font-color: white;
 
+// All backgrounds colors for cards
 $background-modal-color: white;
 $background-header-card-color: #F7F7F7;
 $background-footer-icon-color: white;
-$border-card-color: #dddddd; 
-$header-card-left-button-color: #dddddd;
-$skill-card-level-empty-color: #dddddd;
-$skill-card-level-full-color: #FDCB58;
+
+// Colors close, minimize and size up button on cards
 $header-card-left-button-color: #ED4C5C;
 $header-card-middle-button-color: #FDCB58;
 $header-card-right-button-color: #78B159;
+
+// Colors for levels of skills
+$skill-card-level-empty-color: #dddddd;
+$skill-card-level-full-color: #FDCB58;
+
+// Others...
+$border-card-color: #dddddd;
 $spacer-color: black;
 
+
+// Breakpoints for media queries
 $breakpoint-tablet: 1024px;
 $breakpoint-mobile: 460px;
