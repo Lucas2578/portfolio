@@ -1,20 +1,21 @@
 import React from 'react';
-import Header from '../../components/header/Header';
 import Starfield from '../../components/starfield/Starfield';
-import AppleCard from '../../components/cards/AppleCard';
-import Footer from '../../components/footer/Footer';
+import AboutMeCard from '../../components/cards/home/AboutMeCard';
+import calculateAge from '../../utils/calculateAge';
+import Layout from '../../components/layout/Layout';
 
 const Home = () => {
+    // My birthday date for calculate my age
+    const birthDate = '2002-03-25';
+    const age = calculateAge(birthDate);
 
     return (
-      <div>
-        <Header />
-        <main className="home">
-            <Starfield />
-            <AppleCard />
-        </main>
-        <Footer />
-      </div>
+        <Layout>
+            <main className="home">
+                <Starfield />
+                <AboutMeCard age={age} />
+            </main>
+        </Layout>
     );
   };
 

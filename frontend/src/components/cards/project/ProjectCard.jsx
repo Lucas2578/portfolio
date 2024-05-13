@@ -1,64 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import Modal from '../modal/Modal';
-import useModal from '../../utils/useModal';
-import { translateProjectCardNameKey } from '../../utils/language/SearchTraduction';
-import { fetchProjects, fetchWebSkills, fetchOtherSkills } from '../../utils/getDatas';
-import { useLanguage } from '../../utils/language/LanguageContext';
+import React from 'react';
+import Modal from '../../modal/Modal';
+import useModal from '../../../utils/useModal';
+import { translateProjectCardNameKey } from '../../../utils/language/SearchTraduction';
+import { useLanguage } from '../../../utils/language/LanguageContext';
 import { NavLink } from 'react-router-dom';
-import { REACT_APP_BASE_URL } from '../../utils/config';
+import { REACT_APP_BASE_URL } from '../../../utils/config';
+import HeaderCard from '../HeaderCard';
 
-const ProjectCard = () => {
-    // Initializing three constants with empty array
-    const [projects, setProjects] = useState([]);
-    const [webSkills, setWebSkills] = useState([]);
-    const [otherSkills, setOtherSkills] = useState([]);
-    const [enlargedCard, setEnlargedCard] = useState(null);
+const ProjectCard = ({ projects, webSkills, otherSkills, onProjectClick, enlargedCard}) => {
     // Translates
     const { translations } = useLanguage();
-
-    useEffect(() => {
-        // Projects datas
-        fetchProjects()
-        .then(data => {
-            setProjects(data);
-        })
-        .catch(error => {
-            console.error('Error fetching projects:', error);
-        });
-        
-        // Webskills datas
-        fetchWebSkills()
-        .then(data => {
-            setWebSkills(data);
-        })
-        .catch(error => {
-            console.error('Error fetching webskills:', error);
-        });
-        
-        // Otherskills datas
-        fetchOtherSkills()
-        .then(data => {
-            setOtherSkills(data);
-        })
-        .catch(error => {
-            console.error('Error fetching otherskills:', error);
-        });
-    }, 
-    []);
 
     // Initializing functions at useModal.jsx
     const { handleMouseEnter, handleMouseLeave, isItemHovered } = useModal();
 
-    // Function for enlarged card on click and place THIS card on first position and moving user to THIS project
-    const handleClick = async (project) => {
-        setEnlargedCard(enlargedCard === project.nameKey ? null : project.nameKey);
-        if (enlargedCard !== project.nameKey) {
-            // If card is not on first position, set it
-            await setProjects([project, ...projects.filter(p => p.nameKey !== project.nameKey)]);
-        }
-        // Moving user to good project with anchor
-        document.getElementById(project.nameKey).scrollIntoView();
-    };
+    const handleClick = (project) => {
+        onProjectClick(project);
+    }
 
     return (
         <div className="projects">
@@ -68,11 +26,7 @@ const ProjectCard = () => {
                     const CardComponent = enlargedCard === project.nameKey ? NavLink : 'div';
                     return (
                         <CardComponent className={`project__card ${enlargedCard === project.nameKey ? 'project__card--selected' : ''}`} id={project.nameKey} key={project.nameKey} onClick={() => handleClick(project)} to={enlargedCard === project.nameKey ? `/project/${project.nameKey}` : null}>
-                            <div className="project__card__header">
-                                <i className="fa-solid fa-circle red project__card__header--icon"></i>
-                                <i className="fa-solid fa-circle yellow project__card__header--icon"></i>
-                                <i className="fa-solid fa-circle green project__card__header--icon"></i>
-                            </div>
+                            <HeaderCard />
                             <div className="project__card__body">
                                 <h2 className="project__card__body--title">{translateProjectCardNameKey(project.nameKey, translations.projects_page.projects)}</h2>
                                 <div className="spacer"></div>

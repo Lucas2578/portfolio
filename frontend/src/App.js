@@ -12,12 +12,12 @@ const App = () => {
   return (
     <BrowserRouter>
       <LanguageProvider>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/project/:projectNameKey" element={<Project />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/skills" element={<Skills />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/project/:projectNameKey" element={<Project />} />
+          </Routes>
       </LanguageProvider>
     </BrowserRouter>
   );

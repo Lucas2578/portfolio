@@ -1,5 +1,6 @@
 import React from 'react';
-import { useLanguage } from '../../utils/language/LanguageContext';
+import { useLanguage } from '../../../utils/language/LanguageContext';
+import HeaderCard from '../HeaderCard';
 
 const TitleCard = ({ category }) => {
     // Translates
@@ -10,11 +11,7 @@ const TitleCard = ({ category }) => {
 
     return (
         <div className="cardtitle">
-            <div className="cardtitle__header">
-                <i className="fa-solid fa-circle red"></i>
-                <i className="fa-solid fa-circle yellow"></i>
-                <i className="fa-solid fa-circle green"></i>
-            </div>
+            <HeaderCard />
             <div className="cardtitle__body">
                 <h2>{title}</h2>
             </div>

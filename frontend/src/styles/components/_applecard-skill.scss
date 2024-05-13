@@ -22,28 +22,16 @@
         background: white;
         border-radius: 8px;
         border: 1px solid #ddd;
-        width: 185px;
         font-family: "Roboto", sans-serif;
         z-index: 1;
+        width: 185px;
 
         &__list {
+            animation: fadeInDiagonal 2s ease forwards;
             display: flex;
             flex-wrap: wrap;
             gap: 35px;
             justify-content: center;
-        }
-
-        &__header {
-            background-color: $background-header-card-color;
-            border-bottom: 1px solid $border-card-color;
-            border-radius: 8px 8px 0px 0px;
-            align-items: center;
-            padding: 5px;
-
-            &--icon {
-                font-size: 10px;
-                margin-left: 5px;
-            }
         }
 
         &__body {

@@ -1,37 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import SkillCardLevel from './SkillCardLevel';
 import TitleCard from './TitleCard';
-import { fetchWebSkills, fetchOtherSkills } from '../../utils/getDatas';
-import { translateSkillCardNameKey } from '../../utils/language/SearchTraduction';
-import { useLanguage } from '../../utils/language/LanguageContext';
+import { translateSkillCardNameKey } from '../../../utils/language/SearchTraduction';
+import { useLanguage } from '../../../utils/language/LanguageContext';
+import HeaderCard from '../HeaderCard';
 
-const SkillCard = () => {
-    // Initializing two constants with empty array
-    const [webSkills, setWebSkills] = useState([]);
-    const [otherSkills, setOtherSkills] = useState([]);
+const SkillCard = ({webSkills, otherSkills}) => {
     // Translates
     const { translations } = useLanguage();
-
-    useEffect(() => {
-        // Webskills datas
-        fetchWebSkills()
-        .then(data => {
-            setWebSkills(data);
-        })
-        .catch(error => {
-            console.error('Error fetching webskills:', error);
-        });
-        
-        // Otherskills datas
-        fetchOtherSkills()
-        .then(data => {
-            setOtherSkills(data);
-        })
-        .catch(error => {
-            console.error('Error fetching otherskills:', error);
-        });
-    }, 
-    []);
 
     // Initializing an array with different skills categories
     const groupedSkills = [
@@ -49,11 +25,7 @@ const SkillCard = () => {
                         {/* Mapping for each present skill */}
                         {skills.map(skill => (
                             <div key={skill._id} className="skill__card">
-                                <div className="skill__card__header">
-                                    <i className="fa-solid fa-circle red skill__card__header--icon"></i>
-                                    <i className="fa-solid fa-circle yellow skill__card__header--icon"></i>
-                                    <i className="fa-solid fa-circle green skill__card__header--icon"></i>
-                                </div>
+                                <HeaderCard />
                                 <div className="skill__card__body">
                                     <i className={`${skill.icon} skill__card__body--icon`}></i>
                                     <div className="spacer"></div>

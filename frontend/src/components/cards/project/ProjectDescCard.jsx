@@ -1,38 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { fetchProject } from '../../utils/getDatas';
-import { translateDescCardProjectTitle, translateDescCardProjectContent } from '../../utils/language/SearchTraduction';
-import { useLanguage } from '../../utils/language/LanguageContext';
-import Modal from '../modal/Modal';
-import useModal from '../../utils/useModal';
+import React from 'react';
+import { translateDescCardProjectTitle, translateDescCardProjectContent } from '../../../utils/language/SearchTraduction';
+import { useLanguage } from '../../../utils/language/LanguageContext';
+import Modal from '../../modal/Modal';
+import useModal from '../../../utils/useModal';
+import HeaderCard from '../HeaderCard';
 
-const ProjectDescCard = () => {
-    const { projectNameKey } = useParams();
-    const [project, setProject] = useState([]);
+const ProjectDescCard = ({ project, projectNameKey }) => {
     // Translates
     const { translations } = useLanguage();
-  
-    useEffect(() => {
-      // Project datas
-      fetchProject(projectNameKey)
-      .then(data => {
-          setProject(data);
-      })
-      .catch(error => {
-          console.error('Error fetching projects:', error);
-      });
-  }, 
-  [projectNameKey]);
     
+    // Functions for modal
     const { handleMouseEnter, handleMouseLeave, isItemHovered } = useModal();
 
     return (
         <div className="project__info__card">
-            <div className="project__info__card__header">
-                <i className="fa-solid fa-circle red"></i>
-                <i className="fa-solid fa-circle yellow"></i>
-                <i className="fa-solid fa-circle green"></i>
-            </div>
+            <HeaderCard />
             <div className="project__info__card__body">
                 <h2 className="project__info__card__body--title">{translateDescCardProjectTitle(projectNameKey, translations.project_page.project)}</h2>
                 <div className="spacer"></div>

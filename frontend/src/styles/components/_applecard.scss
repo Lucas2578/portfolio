@@ -2,10 +2,10 @@
     background: white;
     border-radius: 8px;
     border: 1px solid #ddd;
-    width: 700px;
-    height: 425px;
     font-family: "Roboto", sans-serif;
     z-index: 1;
+    width: 700px;
+    height: 425px;
 
     @media screen and (max-width: $breakpoint-tablet) {
         height: 475px;
