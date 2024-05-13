@@ -18,6 +18,10 @@ main {
     background-color: #200505;
     padding: 80px;
     min-height: 550px;
+
+    @media screen and (max-width: 1024px) {
+        padding: 80px 0px 80px 0px;
+    }
 }
 
 button, input[type="submit"], input[type="reset"] {
