@@ -1,6 +1,8 @@
+import { BACK_BASE_URL } from "./config";
+
 // Datas from "projects" table in db
 export const fetchProjects = () => {
-    return fetch('http://localhost:4000/api/project').then(response => {
+    return fetch(`${BACK_BASE_URL}/api/project`).then(response => {
         if (!response.ok) {
             throw new Error('Erreur lors de la récupération des projets');
         }
@@ -12,7 +14,7 @@ export const fetchProjects = () => {
 
 // Datas from "projects" table in db for THIS project
 export const fetchProject = (projectNameKey) => {
-    return fetch(`http://localhost:4000/api/project/${projectNameKey}`).then(response => {
+    return fetch(`${BACK_BASE_URL}/api/project/${projectNameKey}`).then(response => {
         if (!response.ok) {
             throw new Error('Erreur lors de la récupération du projet');
         }
@@ -24,7 +26,7 @@ export const fetchProject = (projectNameKey) => {
 
 // Datas from "webskills" table in db
 export const fetchWebSkills = () => {
-    return fetch('http://localhost:4000/api/skillwebs').then(response => {
+    return fetch(`${BACK_BASE_URL}/api/skillwebs`).then(response => {
         if (!response.ok) {
             throw new Error('Erreur lors de la récupération des compétences web');
         }
@@ -36,7 +38,7 @@ export const fetchWebSkills = () => {
 
 // Datas from "otherskills" table in db
 export const fetchOtherSkills = () => {
-    return fetch('http://localhost:4000/api/skillothers').then(response => {
+    return fetch(`${BACK_BASE_URL}/api/skillothers`).then(response => {
         if (!response.ok) {
             throw new Error('Erreur lors de la récupération des autres compétences');
         }
