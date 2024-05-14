@@ -42,7 +42,7 @@ const Project = () => {
     []);
 
     // Function for enlarged card on click and place THIS card on first position and moving user to THIS project
-    const handleClick = async (project) => {
+    const handleClick = async (project, event) => {
         setEnlargedCard(enlargedCard === project.nameKey ? null : project.nameKey);
         if (enlargedCard !== project.nameKey) {
             // If card is not on first position, set it
