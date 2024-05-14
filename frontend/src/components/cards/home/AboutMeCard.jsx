@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfilePicture from '../../../assets/images/profile_picture.jpg';
+import ProfilePicture from '../../../assets/images/profile_picture.webp';
 import { useLanguage } from '../../../utils/language/LanguageContext';
 import HeaderCard from '../HeaderCard';
 

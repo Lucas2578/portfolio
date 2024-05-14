@@ -1,6 +1,6 @@
 import React from 'react';
-import fr_flag from '../../assets/images/french_flag.png';
-import uk_flag from '../../assets/images/uk_flag.png';
+import fr_flag from '../../assets/images/french_flag.webp';
+import uk_flag from '../../assets/images/uk_flag.webp';
 import LanguageButton from './LanguageButton';
 import Nav from '../nav/Nav';
 
