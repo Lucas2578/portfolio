@@ -5,8 +5,10 @@ import { REACT_APP_BASE_URL } from '../../../utils/config';
 import HeaderCard from '../HeaderCard';
 
 const ProjectScreenCard = ({ screen, project, projectNameKey }) => {
-  // Translates
-  const { translations } = useLanguage();
+    // Translates
+    const { translations } = useLanguage();
+
+    const imagePath = project && project.imagePaths && `${REACT_APP_BASE_URL}/${project.imagePaths[screen]}`;
 
     return (
       <div className="project__info__card">
@@ -17,7 +19,7 @@ const ProjectScreenCard = ({ screen, project, projectNameKey }) => {
           {project && project.imagePaths && (
               <div className="project__info__card__body__img">
                   {/* URL to image */}
-                  <img src={`${REACT_APP_BASE_URL}/${project.imagePaths[screen]}`} alt={translateSubCardNameScreen(projectNameKey, screen, translations.project_page.project)} className="project__info__card__body__img--img"></img>
+                  <img src={imagePath} alt={translateSubCardNameScreen(projectNameKey, screen, translations.project_page.project)} className="project__info__card__body__img--img"></img>
               </div>
           )}
           <div className="spacer"></div>
